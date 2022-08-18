@@ -93,7 +93,7 @@ function loadScreen(){
 			{showScore ? 
          
 				<div className='score-section'><h2>You scored {score} out of {questions.length}</h2>
-             {score >= 8 ? <> <Confetti/> <p>Welldone! QuizMater</p> </> : <p>Nice attempt! you can do better</p>}
+             {score >= 8 ? <> <Confetti/> <p>Welldone! QuizMaster</p> </> : <p>Nice attempt! you can do better</p>}
       </div>
 			 : 	<div><h2><span>Question {currentQuestion + 1}</span>/{questions.length}</h2></div>}
 
