@@ -24,7 +24,7 @@
 @media only screen and (max-width: 400px) {
   .App {
    width: 250px;
-   height: 500px;
+   height: 400px;
    font-size: 11px;
    padding: 30px;
   }
@@ -71,7 +71,7 @@ border: none;
 .next-section{
    margin-top: 30px; 
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 
 }
 
