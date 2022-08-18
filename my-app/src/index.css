@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke;
+  background-image: url("https://AVu120.github.io/trivia-quiz/background.jpg?raw=true");
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.option{
+  cursor: pointer;
+  border: none;
+  padding: 7px;
+
+}
+.optionCont{
+  display: flex;
+  gap: 1rem;
+}
+.submit{
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+}
+
