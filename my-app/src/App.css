@@ -21,6 +21,15 @@
   }
 }
 
+@media only screen and (max-width: 400px) {
+  .App {
+   width: 250px;
+   height: 500px;
+   font-size: 11px;
+   padding: 30px;
+  }
+}
+
 
 .answer-section{
   display: flex;
