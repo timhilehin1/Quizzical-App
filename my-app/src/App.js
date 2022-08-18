@@ -52,15 +52,15 @@ function nextQuestion(){
 }
 
 // function to return to previous page
-function prevQuestion(){
-  const prevQuestion = currentQuestion - 1
-  if(prevQuestion < 1){
-   alert('Y have reached the first question')
-  }
-  else{
-    setcurrentQuestion(prevQuestion)
-  }
-}
+// function prevQuestion(){
+//   const prevQuestion = currentQuestion - 1
+//   if(prevQuestion < 1){
+//    alert('Y have reached the first question')
+//   }
+//   else{
+//     setcurrentQuestion(prevQuestion)
+//   }
+// }
 
 //function that reloads browser if user decides to take the quiz again
 function refresh(){
@@ -149,7 +149,6 @@ function loadScreen(){
         
 			{ 
         <div style={{display : showScore ? 'none' : ''}} className='next-section'>
-        <button className='nextButton' onClick={prevQuestion}><i class="fa-solid fa-angle-left"></i></button>
         <button className='nextButton' onClick={nextQuestion}><i class="fa-solid fa-angle-right"></i></button>
           </div>
 
