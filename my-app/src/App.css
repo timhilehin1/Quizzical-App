@@ -5,7 +5,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* border: 1px solid; */
   padding: 10px;
   height: 510px;
   background-color: white;
@@ -23,7 +22,7 @@
 
 @media only screen and (max-width: 400px) {
   .App {
-   width: 250px;
+   width: 270px;
    height: 400px;
    font-size: 11px;
    padding: 30px;
@@ -69,9 +68,11 @@ border: none;
 }
 
 .next-section{
-   margin-top: 30px; 
   display: flex;
   justify-content: flex-end;
+  /* border: 1px solid; */
+  margin-top: -15px;
+  
 
 }
 
