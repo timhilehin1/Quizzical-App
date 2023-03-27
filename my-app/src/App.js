@@ -9,32 +9,43 @@ function App() {
   const  [questions, setQuestions ] = useState([])
   const [currentQuestion, setcurrentQuestion] = useState(0)
   const [showScore, setShowScore] = useState(false)
-  const [score, setScore] = useState(0)  
-  const [load, setLoad] = useState(true)
-  
-  
+  const [score, setScore] = useState(0)
+    const [load, setLoad] = useState(true)
+    const [demo, setDemo] = useState([1,2,3])
+    const [randomIndex, setRandomIndex] = useState()
+    const [options, setOptions] = useState()
+
+
 
 
    //API returning questions array
   useEffect(()=>{
-   
+
     fetch('https://opentdb.com/api.php?amount=10&category=21&difficulty=medium&type=multiple')
     .then((response)=>response.json())
-    .then((data)=>setQuestions(data.results))
+        .then((data) =>setQuestions(data.results))
     .catch((error)=>console.log('error'))
 
-},[])
+  }, [])
+
+
+    function getRandomIndex() {
+       let randomIndex = Math.floor(Math.random() * (demo.length + 1));
+        setRandomIndex(randomIndex)
+ }
 
 
 let tempAnswer
-let tempAnswer1
- 
+
 //function to increment scores and check for correct answer, it also responsible for displaying next question.
-function nextQuestion(){
-  if(tempAnswer === questions[currentQuestion].correct_answer || tempAnswer1 === questions[currentQuestion].correct_answer ){
+    function nextQuestion() {
+          getRandomIndex()
+  if( tempAnswer === questions[currentQuestion].correct_answer ){
  setScore(score+1)
-  }
- 
+    }
+
+
+
   const nextQuestion = currentQuestion + 1
   if(nextQuestion < questions.length){
     setcurrentQuestion(nextQuestion)
@@ -45,9 +56,9 @@ function nextQuestion(){
 
   let options = document.querySelectorAll('.option')
   for(let i=0; i<=options.length; i++){
- options[i].style.backgroundColor = ""; 
+ options[i].style.backgroundColor = "";
  options[i].style.color = "black";
- 
+
 }
 }
 
@@ -68,30 +79,28 @@ function refresh(){
 }
 
 //function that returns the user to the welcome page
-function loadScreen(){
+    function loadScreen() {
+       getRandomIndex()
   setLoad(false)
 }
 
 
 
-// console.log(questions)
-
-
 
   return (
-   
-  
+
+
     <div className="App">
-     
-     
+
+
         { load ? <div className='start-screen'>
           <h2>Welcome to Quizzical</h2>
           <p>Please read the questions carefully before you answer</p>
-          <button className= 'start-btn' onClick={loadScreen}>click here to start quiz</button> 
+          <button className= 'start-btn' onClick={loadScreen}>click here to start quiz</button>
           </div>:
         <div>
-			{showScore ? 
-         
+			{showScore ?
+
 				<div className='score-section'><h2>You scored {score} out of {questions.length}</h2>
              {score >= 8 ? <> <Confetti/> <p>Welldone! QuizMaster</p> </> : <p>Nice attempt! you can do better</p>}
       </div>
@@ -106,14 +115,14 @@ function loadScreen(){
 					<div className='question-text'><h2>{currentQuestion+1}.{questions.length > 0 && questions[currentQuestion].question}</h2></div>
 					</div>
 					<div className='answer-section'>
-            
-          {questions.length > 0 && questions[currentQuestion].incorrect_answers.map((answerOptions)=>{
+
+          { questions[currentQuestion].incorrect_answers.splice(randomIndex, 0, questions[currentQuestion].correct_answer) && questions[currentQuestion].incorrect_answers.map((answerOptions)=>{
 
          return (
                 <div>
                     <button className='option' onClick={(e)=>{
                         tempAnswer = e.target.innerHTML
-                     
+
                   let options = document.querySelectorAll('.option')
                   for(let i = 0; i<options.length; i++){
                    options[i].style.backgroundColor = ''
@@ -121,7 +130,7 @@ function loadScreen(){
                   }
                e.target.style.backgroundColor = '#fd5660'
                e.target.style.color = 'white'
-             
+
                }}>{answerOptions}</button>
                 </div>
              )
@@ -129,37 +138,24 @@ function loadScreen(){
 
 
 
-          { questions.length > 0 && <div><button className='option' onClick={(e)=>{
-                   tempAnswer1 = e.target.innerHTML
-                  let options = document.querySelectorAll('.option')
-                  for(let i = 0; i<options.length; i++){
-                   options[i].style.backgroundColor = ''
-                   options[i].style.color = 'black'
 
-                  }
-              e.target.style.backgroundColor = '#fd5660'
-              e.target.style.color = 'white'
-
-            }}>
-              {questions[currentQuestion].correct_answer}</button></div> }
-        
 					</div>
 			   	</>}
 
-        
-			{ 
+
+			{
         <div style={{display : showScore ? 'none' : ''}} className='next-section'>
         <button className='nextButton' onClick={nextQuestion}><i class="fa-solid fa-angle-right"></i></button>
           </div>
 
-      } 	
+      }
 
         </div>
-        
-} 
-          
-    </div> 
-          
+
+}
+
+    </div>
+
   );
 }
 
@@ -168,4 +164,3 @@ function loadScreen(){
 export default App;
 
 
-// questions[currentQuestion].correct_answer
